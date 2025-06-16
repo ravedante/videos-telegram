@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meus Vídeos</title>
+</head>
+<body>
+  <h1>Lista de Vídeos:</h1>
+  <ul id="lista"></ul>
+  <script>
+    fetch('db.json')
+    .then(res => res.json())
+    .then(data => {
+      let lista = document.getElementById("lista");
+      data.forEach(v => {
+        let li = document.createElement("li");
+        li.innerHTML = \`<a href="\${v.link}" target="_blank">\${v.nome}</a>\`;
+        lista.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>
